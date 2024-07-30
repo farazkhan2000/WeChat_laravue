@@ -12,8 +12,8 @@ const showingNavigationDropdown = ref(false);
 
 <template>
     <div>
-        <div class="min-h-screen bg-gray-100">
-            <nav class="bg-white border-b border-gray-100">
+        <div class="min-h-screen bg-slate-800">
+            <nav class="bg-slate-800 border-b border-slate-700">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between h-16">
@@ -22,14 +22,14 @@ const showingNavigationDropdown = ref(false);
                             <div class="shrink-0 flex items-center">
                                 <Link :href="route('wechat')">
                                     <ApplicationLogo
-                                        class="block h-9 w-auto fill-current text-gray-800"
+                                        class="block h-9 w-auto fill-current text-white"
                                     />
                                 </Link>
                             </div>
 
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                                <NavLink :href="route('wechat')" :active="route().current('wechat')">
+                                <NavLink :href="route('wechat')" :active="route().current('wechat')" class="text-white">
                                     WeChat
                                 </NavLink>
                             </div>
@@ -43,7 +43,7 @@ const showingNavigationDropdown = ref(false);
                                         <span class="inline-flex rounded-md">
                                             <button
                                                 type="button"
-                                                class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
+                                                class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md bg-gray-500 text-white hover:text-white focus:outline-none transition ease-in-out duration-150"
                                             >
                                                 {{ $page.props.auth.user.name }}
 
@@ -137,8 +137,8 @@ const showingNavigationDropdown = ref(false);
             </nav>
 
             <!-- Page Heading -->
-            <header class="bg-white shadow" v-if="$slots.header">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <header class="bg-slate-800 shadow" v-if="$slots.header">
+                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-white ">
                     <slot name="header" />
                 </div>
             </header>
