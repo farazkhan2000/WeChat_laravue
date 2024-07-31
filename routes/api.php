@@ -15,10 +15,21 @@ use App\Http\Controllers\ChatController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
-Route::get('/contacts', [ChatController::class, 'getContacts']);
-Route::get('/messages/{id}', [ChatController::class, 'getMessages']);
-Route::post('/send-message', [ChatController::class, 'sendMessage']);
+// Route::get('/contacts', [ChatController::class, 'getContacts']);
+// Route::get('/messages/{id}', [ChatController::class, 'getMessages']);
+// Route::post('/send-message', [ChatController::class, 'sendMessage']);
+
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    });
+
+    Route::get('/contacts', [ChatController::class, 'getContacts']);
+    Route::get('/messages/{id}', [ChatController::class, 'getMessages']);
+    Route::post('/send-message', [ChatController::class, 'sendMessage']);
+});
