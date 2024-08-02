@@ -23,7 +23,12 @@ class ChatController extends Controller
             'to' => $request->to,
             'from' => $currentUserId,
             'message' => $request->message,
+            'created_at' => Now()
         ]);
+
+        // if($message) {
+        //     $pusher->trigger('.messages' . $message->to, 'Message', [ 'message' => 'hello world' ]);
+        // }
 
         return response()->json($message);
     }

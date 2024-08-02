@@ -50,7 +50,7 @@ export default {
             try {
                 const response = await axios.get('/api/contacts');
                 this.contacts = response.data;
-                console.log('this.contacts: ', this.contacts);
+                // console.log('this.contacts: ', this.contacts);
             } catch (error) {
                 console.error('Error fetching contacts:', error);
             }
@@ -60,15 +60,13 @@ export default {
             try {
                 const response = await axios.get(`/api/messages/${contact.id}`);
                 this.selectedContactMessages = response.data;
-                console.log('this.selectedContactMessages: ', this.selectedContactMessages);
+                // console.log('this.selectedContactMessages: ', this.selectedContactMessages);
                 this.selectedContact = contact;
-                console.log('this.selectedContact: ', this.selectedContact);
+                // console.log('this.selectedContact: ', this.selectedContact);
             } catch (error) {
                 console.error('Error fetching messages:', error);
             }
         },
-
-
     },
     mounted() {
         this.getContacts();

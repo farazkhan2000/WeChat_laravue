@@ -9,11 +9,12 @@
       <input 
         type="search" 
         placeholder="Search contacts..." 
-        class="block w-full p-4 ps-10 text-sm border rounded-lg bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+        v-model="searchContacts"
+        class="block w-full p-3 ps-10 text-sm border rounded-lg bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
       >
     </div>
-    <ul class="mt-3">
-      <li v-for="contact in contacts" :key="contact.id" @click="selectContact(contact)" class="rounded-lg hover:bg-slate-950">
+    <ul class="mt-3 overflow-y-auto h-[68vh]">
+      <li v-for="contact in filteredContacts" :key="contact.id" @click="selectContact(contact)" class="rounded-lg hover:bg-slate-950">
         <div class="flex items-center gap-2 py-3 px-3 cursor-pointer">
           <img src="/assets/icons/user.png" class="profile-image rounded-full" alt="profile">
           <div class="flex justify-between items-end w-full ps-2">
@@ -42,7 +43,14 @@ export default {
   },
   data () {
     return {
-      
+      searchContacts: ''
+    }
+  },
+  computed: {
+    filteredContacts() {
+      return this.contacts.filter(contact => {
+        return contact.name.toLowerCase().includes(this.searchContacts.toLowerCase())
+      })
     }
   },
   methods: {
