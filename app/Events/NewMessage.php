@@ -9,8 +9,9 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use App\Models\Message;
 
-class Message implements ShouldBroadcast
+class NewMessage implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
     public $message;
@@ -21,7 +22,7 @@ class Message implements ShouldBroadcast
     public function __construct(Message $message)
     {
         $this->message = $message;
-        \Log::info('Message received in event:', ['message' => $message]);
+        // \Log::info('Message received in event:', ['message' => $message]);
     }
 
     /**

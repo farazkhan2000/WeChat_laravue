@@ -14,8 +14,13 @@
       >
     </div>
     <ul class="mt-3 overflow-y-auto h-[68vh]">
-      <li v-for="contact in filteredContacts" :key="contact.id" @click="selectContact(contact)" class="rounded-lg hover:bg-slate-950">
-        <div class="flex items-center gap-2 py-3 px-3 cursor-pointer">
+      <li 
+        v-for="contact in filteredContacts" :key="contact.id" 
+        @click="selectContact(contact)" 
+        :class="{'bg-slate-900': selectedContact && selectedContact.id === contact.id, 'hover:bg-slate-900': true}"
+        class="rounded-lg"
+      >
+        <div class="flex items-center gap-2 py-3 my-1 px-3 cursor-pointer">
           <img src="/assets/icons/user.png" class="profile-image rounded-full" alt="profile">
           <div class="flex justify-between items-end w-full ps-2">
             <div>
@@ -43,7 +48,8 @@ export default {
   },
   data () {
     return {
-      searchContacts: ''
+      searchContacts: '',
+      selectedContact: null
     }
   },
   computed: {
@@ -55,6 +61,7 @@ export default {
   },
   methods: {
     selectContact(contact) {
+      this.selectedContact = contact;
       this.$emit('selectedContact', contact)
     }
   }

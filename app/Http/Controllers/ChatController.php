@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Message;
+use App\Events\NewMessage;
 use Illuminate\Support\Facades\Auth;
 class ChatController extends Controller
 {
@@ -26,9 +27,9 @@ class ChatController extends Controller
             'created_at' => Now()
         ]);
 
-        // if($message) {
-        //     $pusher->trigger('.messages' . $message->to, 'Message', [ 'message' => 'hello world' ]);
-        // }
+        if($message) {
+            broadcast(new NewMessage($message));
+        }
 
         return response()->json($message);
     }
